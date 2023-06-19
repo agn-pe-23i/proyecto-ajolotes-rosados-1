@@ -35,7 +35,7 @@ def cargar_catalogo_archivo():
         nombre_archivo_completo = nombre_archivo + '.txt'
         try:
             # Intentar abrir el archivo en modo de lectura
-            with open(nombre_archivo_completo, 'r') as archivo:
+            with open(nombre_archivo_completo, 'r', encoding='utf-8') as archivo:
                 # Leer el contenido del archivo
                 contenido = archivo.read()
                 # Evaluar el contenido como una expresión de Python
