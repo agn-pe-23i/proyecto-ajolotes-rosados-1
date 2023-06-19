@@ -17,8 +17,8 @@ Algunas de las funcionalidades del programa incluyen la carga inicial del catalo
   - Tabla de contenidos
   - Estructura del proyecto
   - Funciones
-  - Consideraciones
   - Intruciones de uso
+  - Comentarios sobre la implementacion
 
 ## Estructura del proyecto
 
