@@ -235,6 +235,7 @@ def principal(catalogo):
         elif seleccion == 5:
             # Verifica si el catálogo ha sido cargado y llama a la función cargar_catalogo() si no ha sido cargado antes
             if catalogo is None:
+                print('En caso de no contar con un archivo, por favor solo ponga el nombre deseado para crear uno.')
                 catalogo = cargar_catalogo()
             else:
                 print('El catálogo ya ha sido cargado.')
