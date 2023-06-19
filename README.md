@@ -23,9 +23,10 @@ Algunas de las funcionalidades del programa incluyen la carga inicial del catalo
 ## Estructura del proyecto
 
 ![top-down diagrame de estructura](./img/diagrama.png)
-<sub>_**click [aqui](https://www.figma.com/file/gGUbw0SLhhbP5NFplgt1iu/Untitled?type=whiteboard&node-id=0%3A1&t=nSldvbEi6irod2cM-1) Para revisar el diagrama en mejor resolucion**_</sub>
+<sub>_**click [aqui](https://www.figma.com/file/gGUbw0SLhhbP5NFplgt1iu/Untitled?type=whiteboard&node-id=0%3A1&t=nSldvbEi6irod2cM-1) para revisar el diagrama en mejor resolucion**_</sub>
 
--El diagrama de estrucutra que guio este proyecto, fue creado de tal manera que se pueda apreciar de una manera sencilla la estructura del trabajo a seguir. Gracias al diagrama creado se pudo realizar la implementacion a python sin tantos problemas de estructura general del programa.
+- El diagrama de estrucutra que guio este proyecto, fue creado de tal manera que se pueda apreciar de una manera sencilla la estructura del trabajo a seguir. Gracias al diagrama creado se pudo realizar la implementacion a python sin tantos problemas de estructura general del programa.
+- La estructura del diagrama empieza con la funcion main que es la encargada de iniciar el programa, seguida de una funcion principal, que esta pensada para controlar las opciones que se toman en el menu, y en cada funcion dedicada a la manipulacion del catalogo se tienen otras funciones especificas para la funcion dada.
 
 ## Funciones
 
@@ -33,16 +34,17 @@ Click [aqui](./funciones.md) para ir a las funciones
 
 ## Intruciones de uso
 
-1. Para hacer uso del sistema de catalogos, solo basta con tener python instalado en el sistema, y tener descargados los archivos del repositorio
-2. Para iniciar el programa hay que abrir la terminal en donde se encuentran los archivos de este repositorio y escribir:
+1. Para hacer uso del sistema de catalogos, solo es necesario tener python instalado en el sistema, y tener descargados los archivos del repositorio
+2. Para iniciar el programa se abre la terminal donde se encuentran los archivos de este repositorio y escribir:
 
     ```cmd
     py catalogo.py
     ```
 
-3. Una vez desplegado el menu principal, se tiene que cargar el archivo donde se encuentre el catalogo, esto escogiendo la opcion no.5 (El programa puede crear un achivo nuevo con un catalogo vacio si es que no se cuenta con un archivo previo).
-4. Para hacer uso de la manipulacion y control del catalogo basta con escoger una opcion(agregar,eliminar, mostrar catalogo, buscar) para despues seguir las instrucciones que el sistema pida.
-5. Una vez terminada la manipulacion del catalogo, se tendran que guardar los cambios hechos seleccionando la opcion no.6 del menu principal.
+3. Una vez desplegado el menu principal, se tiene que cargar el archivo donde se encuentre el catalogo, esto escogiendo la opcion no.5 (De lo contrario no se podra accesar a las opciones de manipulacion de catalogo).
+   <sub>Nota. El programa puede crear un achivo nuevo con un catalogo vacio si es que no se cuenta con uno.</sub>
+5. Para hacer uso de la manipulacion y control del catalogo basta con escoger una opcion(agregar,eliminar, mostrar catalogo, buscar) para despues seguir las instrucciones que el sistema pida.
+6. Una vez terminada la manipulacion del catalogo, se tendran que guardar los cambios hechos seleccionando la opcion no.6 del menu principal.
 
 ## Comentarios sobre la implementacion
 
@@ -52,8 +54,11 @@ El programa satisface los requerimentos, aunque hay ciertas excepciones y limita
 
 - La busqueda de productos se basa en palabras clave del titulo. La coincidencia de las palabras clave puede no ser precisa, por lo que se podran no encontrar todos los productos si las palabras no coinciden exactamente con el titulo o si los prodcutos no estan bien escritos.
 - El sistema no valida si hay productos duplicados y la eliminacion se hace cuando se encuentra un unico producto, por lo que se presentaria un problema si existen prodcutos duplicados.
-- El sistema trabaja con un catalgo y estrcutura especifica para todos los productos, si se deseara expandir el catalogo para incluir mas categorias, se tienen que hacer varias modificaciones adicionales para que se pueda escalar.
-  
+- El sistema trabaja con un catalgo y estrucutra especifica para todos los productos, si se deseara expandir el catalogo para incluir mas categorias, se tienen que hacer varias modificaciones adicionales para que se pueda escalar.
+
+En cuanto a caracteristicas del programa, ademas de contar con las opciones de manipulacion de catalogo, el sistema cuenta con algunos agregados como:
+- Verificacion de catalogo cargado: Esta caracteristica no deja escoger alguna opcion para la manipulacion del catalogo hasta que se carge uno, y esto fue asi por la siguiente implementacion.
+- Estructura de datos: Para que el sistema pueda funcionar, el archivo con el que se inicie un catalogo debe de tener la estrucutra que maneja el catalogo, debido a esto es que se implemento en la funcion de cargar catalogo la creacion un archivo vacio(si es que no se cuenta con uno) con un catalogo vacio para poder usar el programa adeacuadamente
 ### Respecto a la implementacion
 
 Para la implementacion fue de gran ayuda un diagrama de estrcutura tan sencillo, aunque durante la creacion de los modulos y las funciones, para dejar mas manejable el codigo se tuvieron que crear muchas mas funciones que en escencia se entienden que pasan en el diagrama, pero en la implementacion resultaba mas facil separar el codigo en partes aun mas pequenas.
