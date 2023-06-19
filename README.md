@@ -46,7 +46,7 @@ Click [aqui](./funciones.md) para ir a las funciones
 
 ## Comentarios sobre la implementacion
 
-### Respecto al diseno del programa
+### Respecto al diseño del programa
 
 El programa satisface los requerimentos, aunque hay ciertas excepciones y limitaciones que tiene el programa:
 
@@ -67,8 +67,9 @@ Para la implementacion fue de gran ayuda un diagrama de estrcutura tan sencillo,
 
 ### Respecto al uso de los modulos
 
-De forma general el uso de ambos modulos fue un poco trivial, porque primero se empezo a trabajar en el modulo menu.py que maneja toda la interfaz del sistema, una vez teniendo ese modulo, no fue mas que empezar a trabajar en el otro modulo que hace toda la manipulacion para que al final solo se importara el modulo de utilidades en el de menu y se agregaran las funciones en cada opcion escogida (agregar/eliminar/buscar un producto, mostrar/cargar/guardar un catalogo).
 En total dos modulos fueron los necesarios para la creacion del sistema
 
 - Modulo menu.py: Este modulo se caracteriza por tener funciones que estan enfocadas a la interfaz del sistema y su interaccion entre menus.
 - Modulo catalogo_utils.py: Este modulo se enfoca en toda la manipulacion de los catalogos, en general en todas las funcionalidades esperadas para el sistema (agregar/eliminar/buscar un producto, mostrar/cargar/guardar un catalogo).
+
+De forma general el uso de ambos modulos fue un poco trivial, porque primero se empezo a trabajar en el modulo menu.py que maneja toda la interfaz del sistema, una vez teniendo ese modulo, no fue mas que empezar a trabajar en el otro modulo que hace toda la manipulacion para que al final solo se importara el modulo de utilidades en el de menu y se agregaran las funciones en cada opcion escogida (agregar/eliminar/buscar un producto, mostrar/cargar/guardar un catalogo).
