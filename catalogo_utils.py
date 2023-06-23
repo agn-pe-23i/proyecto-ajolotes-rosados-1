@@ -162,7 +162,7 @@ def agregar_prodcuto_catalogo(catalogo, categoria, producto):
             item[categoria].append(producto)
             # Detener la búsqueda una vez que se ha agregado el producto
             break
-    return catalogo # Devolver el catálogo actualizado
+    return
 
 
 def formato_impresion_producto(producto):
@@ -214,7 +214,6 @@ def obtener_lista_productos(catalogo):
         for productos in categoria.values():
             # Agregar los productos a la lista_productos
             lista_productos.extend(productos)
-    # Devolver la lista de productos
     return lista_productos
 
 

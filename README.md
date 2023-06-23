@@ -4,7 +4,8 @@
 
 ## Descripcion General del Proyecto
 
-El presente proyecto tiene como objetivo principal actualizar el sistema de renta y venta de un servicio de streaming. Se requiere desarrollar un programa que permita una interaccion eficiente y sencilla que permitan la manipulacion del catalogo de productos.
+El presente proyecto tiene como objetivo principal actual
+izar el sistema de renta y venta de un servicio de streaming. Se requiere desarrollar un programa que permita una interaccion eficiente y sencilla que permitan la manipulacion del catalogo de productos.
 
 El sistema proporcionara una serie de menus que faciliten la manipulacion y gestion de los catalogos de produtos. Quien acceda al sistema podran acceder a algun catalogo, agregar/eliminar productos, realizar una busquedas y visualizar informacion detallada sobre los productos
 
@@ -30,21 +31,91 @@ Algunas de las funcionalidades del programa incluyen la carga inicial del catalo
 
 ## Funciones
 
-Click [aqui](./funciones.md) para ir a las funciones
+La funcion principal o _main()_ se encuentra alojada en el script 'catalogo.py'.
+
+En este mismo script se importa el modulo de *menu* que maneja toda la interfaz del sistema y este mismo conecta con el modulo *catalogo_utils* que se encarga del funcionamiento de la manipulacion del catalogo.
+
+Se inicializa el catalogo en None
+
+  ```python
+    import menu as UserInterface
+
+    catalogo = None
+  ```
+
+### _**main()**_
+
+La funcion main es la que va a dar inicio a todo el programa siendo esta la que despliega el menu principal
+
+Se establece la variable catalogo global, con ello se permite su manipulacion a lo largo de la ejecucion del programa ademas de que al inicio de cada ejecucion del programa se pueda verificar si hay un catalogo cargado en el sistema.
+
+  ```python
+    def main():
+      global catalogo
+      while True:
+          # Obtiene las opciones del menu
+          opciones = UserInterface.opciones_menu(0)
+          # Muestra el titulo del menu "Menu Principal" y las opciones disponibles
+          UserInterface.plantilla_menu('Menú Principal', opciones)
+          # Permite al usuario seleccionar una opcion
+          seleccion, _ = UserInterface.seleccion_opciones(opciones)
+          if seleccion == 1:
+              #Llama a la funcion agregar_producto(catalogo) si la opcion seleccionada es 1
+              UserInterface.agregar_producto(catalogo)
+          elif seleccion == 2:
+              # Llama a la función buscar_producto(catalogo) si la opción seleccionada es 2
+              UserInterface.buscar_producto(catalogo)
+          elif seleccion == 3:
+              # Llama a la función eliminar_producto(catalogo) si la opción seleccionada es 3
+              UserInterface.eliminar_producto(catalogo)
+          elif seleccion == 4:
+              # Llama a la función mostrar_catalogo(catalogo) si la opción seleccionada es 4
+              UserInterface.mostrar_catalogo(catalogo)
+          elif seleccion == 5:
+              # Verifica si el catálogo ha sido cargado y llama a la función cargar_catalogo() 
+              # si no ha sido cargado antes
+              if catalogo is None:
+                  print('En caso de no contar con un archivo, por favor solo ponga el nombre deseado para crear uno.')
+                  catalogo = UserInterface.cargar_catalogo()
+              else:
+                  print('El catálogo ya ha sido cargado.')
+          elif seleccion == 6:
+              # Llama a la función guardar_catalogo(catalogo) para guardar el catálogo en un archivo
+              # Luego, imprime "Hasta luego" y finaliza el bucle
+              UserInterface.guardar_catalogo(catalogo)
+              print('Hasta luego')
+              break
+          elif seleccion == 7:
+              # Finaliza el bucle y termina la ejecución del programa si la opción seleccionada es 7
+              break
+  ```
+Click [aqui](./funciones.md) ver las demas funciones de los modulos.
 
 ## Intruciones de uso
 
 1. Para hacer uso del sistema de catalogos, solo es necesario tener python instalado en el sistema, y tener descargados los archivos del repositorio
 2. Para iniciar el programa se abre la terminal donde se encuentran los archivos de este repositorio y escribir:
 
-    ```cmd
+  ```cmd
     py catalogo.py
-    ```
+  ```
 
 3. Una vez desplegado el menu principal, se tiene que cargar el archivo donde se encuentre el catalogo, esto escogiendo la opcion no.5 (De lo contrario no se podra accesar a las opciones de manipulacion de catalogo).
    <sub>Nota. El programa puede crear un achivo nuevo con un catalogo vacio si es que no se cuenta con uno.</sub>
-5. Para hacer uso de la manipulacion y control del catalogo basta con escoger una opcion(agregar,eliminar, mostrar catalogo, buscar) para despues seguir las instrucciones que el sistema pida.
-6. Una vez terminada la manipulacion del catalogo, se tendran que guardar los cambios hechos seleccionando la opcion no.6 del menu principal.
+4. Para hacer uso de la manipulacion y control del catalogo solo es necesaio escoger una opcion(agregar,eliminar, mostrar catalogo, buscar) para despues seguir las instrucciones que el sistema pida.
+5. Una vez terminada la manipulacion del catalogo, se tendran que guardar los cambios hechos seleccionando la opcion no.6 del menu principal.
+
+### Catalogo prueba almacenado en *catalogo_prueba.txt*
+
+| **Peliculas**                       | **Series**                    | **Documentales**       | **Eventos deportivos en vivo** |
+|-------------------------------------|-------------------------------|------------------------|--------------------------------|
+| Spider Man: De regreso a casa       | Como si fuera la primera vez  | Nuestro Padre          | UEFA Champions League          |
+| Spider Man: Far From Home           | Son como niños                | El estafador de Tinder | Super Bowl                     |
+| Spider Man: No Way Home             | Yo los declaro Marido y Larry | Hongos Fantasticos     | Finales de la NBA              |
+| Spider Man: Into the spider-verse 2 | Grimm                         | Misha y los lobos      | Mundial de Formula 1           |
+| Guardianes de la Galaxia            | Sexo/Vida                     | La vida en la escuela  |                                |
+| Sherk                               | Chucky                        |                        |                                |
+|                                     | Stranger Things               |                        |                                |
 
 ## Comentarios sobre la implementacion
 
@@ -57,8 +128,10 @@ El programa satisface los requerimentos, aunque hay ciertas excepciones y limita
 - El sistema trabaja con un catalgo y estrucutra especifica para todos los productos, si se deseara expandir el catalogo para incluir mas categorias, se tienen que hacer varias modificaciones adicionales para que se pueda escalar.
 
 En cuanto a caracteristicas del programa, ademas de contar con las opciones de manipulacion de catalogo, el sistema cuenta con algunos agregados como:
+
 - Verificacion de catalogo cargado: Esta caracteristica no deja escoger alguna opcion para la manipulacion del catalogo hasta que se carge uno, y esto fue asi por la siguiente implementacion.
 - Estructura de datos: Para que el sistema pueda funcionar, el archivo con el que se inicie un catalogo debe de tener la estrucutra que maneja el catalogo, debido a esto es que se implemento en la funcion de cargar catalogo la creacion un archivo vacio(si es que no se cuenta con uno) con un catalogo vacio para poder usar el programa adeacuadamente
+
 ### Respecto a la implementacion
 
 Para la implementacion fue de gran ayuda un diagrama de estrcutura tan sencillo, aunque durante la creacion de los modulos y las funciones, para dejar mas manejable el codigo se tuvieron que crear muchas mas funciones que en escencia se entienden que pasan en el diagrama, pero en la implementacion resultaba mas facil separar el codigo en partes aun mas pequenas.

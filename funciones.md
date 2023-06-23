@@ -355,27 +355,4 @@
 
           - catalogo (list): Catálogo de productos.
 
-      No regresa ningun valor
-
-- ### _**principal**_
-
-          Menu principal el cual despliega las opciones de manipulacion de catalogo
-
-      _Argumentos:_
-
-          catalogo (list): Catálogo de productos.
-
-      No regresa ningun valor
-
-- ## Catalogo
-
-  Se inicia una variable catalogo en None
-
-  - ### _**main**_
-
-          La funcion main es con la que va a dar inicio a todo el programa.
-          Y se establece la variable catalogo global, con ello se permite su manipulacion a lo largo de la ejecucion del programa.
-
-      _Variables:_
-
-         - catalogo: None
+      No regresa ningun valor.

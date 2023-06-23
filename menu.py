@@ -103,7 +103,7 @@ def agregar_producto(catalogo):
             catalogo = catalogo_utils.agregar_producto_catalogo(catalogo, valor_opcion, producto)
         else:
             # Si se selecciona la opción 5, vuelve al menú principal
-            principal()
+            return
     except Exception as e:
         # Captura y muestra cualquier excepción generada durante la ejecución
         print(str(e))
@@ -125,7 +125,7 @@ def eliminar_producto(catalogo):
         palabras_clave = input('Ingrese palabras clave separadas por espacios: ').split()
         # Obtiene una lista de todos los productos del catálogo utilizando la función obtener_lista_productos del módulo catalogo_utils
         lista_productos = catalogo_utils.obtener_lista_productos(catalogo)
-        # Busca y elimina productos utilizando la función buscar_serie_recursivo del módulo catalogo_utils
+        # Busca y elimina productos utilizando la función buscar_y_eliminar_prodcuto del módulo catalogo_utils
         catalogo_utils.buscar_y_eliminar_producto(lista_productos, palabras_clave, catalogo)
     except Exception as e:
         # Captura y muestra cualquier excepción generada durante la ejecución
@@ -167,7 +167,7 @@ def mostrar_catalogo(catalogo):
         seleccion, _ = seleccion_opciones(opciones)
         if seleccion == 6:
             # Si la opción seleccionada es 6, regresa al menú principal
-            principal()
+            return
         elif seleccion == 5:
             # Si la opción seleccionada es 5, muestra todos los productos del catálogo utilizando la función mostrar_productos() del módulo catalogo_utils
             catalogo_utils.mostrar_productos(catalogo)
@@ -208,43 +208,38 @@ def guardar_catalogo(catalogo):
     # Llama a la función del módulo catalogo_utils para guardar el catálogo en un archivo
     catalogo_utils.guardar_catalogo_archivo(catalogo)
 
-
-def principal(catalogo):
-    """
-        Menu principal el cual despliega las opciones de manipulacion de catalogo
-    """
-    while True:
-        # Obtiene las opciones del menú
-        opciones = opciones_menu(0)
-        # Muestra el título del menú "Menú Principal" y las opciones disponibles
-        plantilla_menu('Menú Principal', opciones)
-        # Permite al usuario seleccionar una opción
-        seleccion, _ = seleccion_opciones(opciones)
-        if seleccion == 1:
-            # Llama a la función agregar_producto(catalogo) si la opción seleccionada es 1
-            agregar_producto(catalogo)
-        elif seleccion == 2:
-            # Llama a la función buscar_producto(catalogo) si la opción seleccionada es 2
-            buscar_producto(catalogo)
-        elif seleccion == 4:
-            # Llama a la función mostrar_catalogo(catalogo) si la opción seleccionada es 4
-            mostrar_catalogo(catalogo)
-        elif seleccion == 3:
-            # Llama a la función eliminar_producto(catalogo) si la opción seleccionada es 3
-            eliminar_producto(catalogo)
-        elif seleccion == 5:
-            # Verifica si el catálogo ha sido cargado y llama a la función cargar_catalogo() si no ha sido cargado antes
-            if catalogo is None:
-                print('En caso de no contar con un archivo, por favor solo ponga el nombre deseado para crear uno.')
-                catalogo = cargar_catalogo()
-            else:
-                print('El catálogo ya ha sido cargado.')
-        elif seleccion == 6:
-            # Llama a la función guardar_catalogo(catalogo) para guardar el catálogo en un archivo
-            # Luego, imprime "Hasta luego" y finaliza el bucle
-            guardar_catalogo(catalogo)
-            print('Hasta luego')
-            break
-        elif seleccion == 7:
-            # Finaliza el bucle y termina la ejecución del programa si la opción seleccionada es 7
-            break
+liiiist = [
+    {'Pelicula': [
+        {'Titulo': 'Spider Man: de regreso a casa', 'Actor/a principal': '  Tom Holland.', 'Director/a': 'Jon Watts', 'Año': '2017', 'Costo Venta': '233', 'Costo Renta': '50'}, 
+        {'Titulo': 'Spider Man: Far From Home', 'Actor/a principal': 'Tom Holland.', 'Director/a': 'Jon Watts', 'Año': '2019', 'Costo Venta': '333', 'Costo Renta': '210'}, {'Titulo': 'Spider Man: No Way Home', 'Actor/a principal': 'Tom Holland', 'Director/a': 'Jon Watts', 'Año': '2020', 'Costo Venta': '661', 'Costo Renta': '211'}, 
+        {'Titulo': 'spider man into the spider-verse 2', 'Actor/a principal': 'Peter Ramsey', 'Director/a': 'Bob Persichetti', 'Año': '2023', 'Costo Venta': '1000', 'Costo Renta': '500'}, 
+        {'Titulo': 'guardianes de la galaxia', 'Actor/a principal': 'Peter Quill', 'Director/a': 'James Gunn', 'Año': '2023', 'Costo Venta': '700', 'Costo Renta': '455'}, 
+        {'Titulo': 'Shrek', 'Actor/a principal': 'Shrek', 'Director/a': 'Andrew Adamson', 'Año': '200', 'Costo Venta': '666', 'Costo Renta': '212'}
+        ]
+     }, 
+     {'Serie': [
+         {'Titulo': 'como si fuera a la primera ves', 'Actor/a principal': 'Adam Sandler', 'Director/a': 'Peter Segal', 'Temporadas': '5', 'Costo Venta': '1000', 'Costo Renta': '500'}, 
+         {'Titulo': 'Son como niños', 'Actor/a principal': 'Kevin James', 'Director/a': 'Dennis Dugan', 'Temporadas': '4', 'Costo Venta': '700', 'Costo Renta': '300'}, 
+         {'Titulo': 'Yo los Declaro Marido y Larry', 'Actor/a principal': 'Adam Sandler', 'Director/a': 'Dennis Dugan', 'Temporadas': '1', 'Costo Venta': '566', 'Costo Renta': '210'}, 
+         {'Titulo': 'Grimm', 'Actor/a principal': 'David Giuntoli', 'Director/a': 'Ever After High', 'Temporadas': '6', 'Costo Venta': '1000', 'Costo Renta': '500'}, 
+         {'Titulo': 'Sexo/Vida', 'Actor/a principal': 'Sarah Shahi', 'Director/a': 'Rotten Tomatoes', 'Temporadas': '2', 'Costo Venta': '800', 'Costo Renta': '400'}, 
+         {'Titulo': 'Chucky', 'Actor/a principal': 'Jennifer Tilly', 'Director/a': 'George Donald Mancini', 'Temporadas': '2', 'Costo Venta': '1000', 'Costo Renta': '500'}, 
+         {'Titulo': 'Stranger Things', 'Actor/a principal': 'Millie Bobby Brown', 'Director/a': 'Matt Duffer Ross Duffer Shawn Levy', 'Temporadas': '4', 'Costo Venta': '1000', 'Costo Renta': '500'}
+         ]
+      }, 
+      {'Documental': [
+          {'Titulo': 'Nuestro padre', 'Director/a': 'donald cline', 'Tema': 'medicina', 'Año': '2022', 'Costo Venta': '1000', 'Costo Renta': '500'}, 
+          {'Titulo': 'El estafador de Tinder', 'Director/a': 'Simon Leviev', 'Tema': 'casos de la vida real', 'Año': '2023', 'Costo Venta': '1000', 'Costo Renta': '500'}, 
+          {'Titulo': 'Hongos fantasticos', 'Director/a': 'Paul Stamets', 'Tema': 'drogadiccion', 'Año': '2020', 'Costo Venta': '700', 'Costo Renta': '300'}, 
+          {'Titulo': 'Misha y los lobos', 'Director/a': 'Misha Defonseca', 'Tema': 'informativo', 'Año': '2021', 'Costo Venta': '900', 'Costo Renta': '450'}, 
+          {'Titulo': 'La vida en la escuela', 'Director/a': 'axel juarez', 'Tema': 'casos de la vida real', 'Año': '2023', 'Costo Venta': '1000', 'Costo Renta': '500'}
+          ]
+       }, 
+       {'Evento deportivo en vivo': [
+           {'Titulo': 'UEFA Champions League ', 'Deporte': 'Fútbol', 'Fecha': '10/06/2023', 'Hora': '13:00', 'Lugar': 'paris', 'Costo Venta': '1000'}, 
+           {'Titulo': 'Super Bowl', 'Deporte': 'Fútbol Americano', 'Fecha': '10/09/2023', 'Hora': '14:00', 'Lugar': 'Estados unidos', 'Costo Venta': '1000'}, 
+           {'Titulo': 'Finales de la NBA', 'Deporte': 'Basketball', 'Fecha': '10/02/2023', 'Hora': '12:00', 'Lugar': 'Estados Unidos', 'Costo Venta': '1000'}, 
+           {'Titulo': 'Mundial de Fórmula 1', 'Deporte': 'Carreras', 'Fecha': '1/02/2023', 'Hora': '17:00', 'Lugar': 'italia', 'Costo Venta': '1000'}
+           ]
+        }
+    ]
