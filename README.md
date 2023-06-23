@@ -105,7 +105,7 @@ Click [aqui](./funciones.md) ver las demas funciones de los modulos.
 4. Para hacer uso de la manipulacion y control del catalogo solo es necesaio escoger una opcion(agregar,eliminar, mostrar catalogo, buscar) para despues seguir las instrucciones que el sistema pida.
 5. Una vez terminada la manipulacion del catalogo, se tendran que guardar los cambios hechos seleccionando la opcion no.6 del menu principal.
 
-### Catalogo prueba almacenado en *catalogo_prueba.txt*
+### Prodcutos prueba almacenados en *catalogo_prueba.txt*
 
 | **Peliculas**                       | **Series**                    | **Documentales**       | **Eventos deportivos en vivo** |
 |-------------------------------------|-------------------------------|------------------------|--------------------------------|
